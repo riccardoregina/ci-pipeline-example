@@ -16,4 +16,9 @@ class CiPipelineApplicationTests {
 		Assertions.assertTrue(true);
 	}
 
+	@Test
+	void fail() {
+		Assertions.fail();
+	}
+
 }
