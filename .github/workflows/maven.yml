@@ -41,6 +41,7 @@ jobs:
         args: >
           -Dsonar.organization=riccardoregina
           -Dsonar.projectKey=riccardoregina_ci-pipeline-example
+          -Dsonar.java.binaries=target/**/*.class
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     #- name: Update dependency graph
