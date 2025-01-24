@@ -48,3 +48,13 @@ jobs:
           -Dsonar.projectKey=riccardoregina_ci-pipeline-example \
           -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.jacoco.reportPaths=target/jacoco.exec
+      
+    - name: Check SonarCloud Quality Gate status
+      uses: wzieba/SonarCloudQualityGateAction@v2
+      with:
+        sonar_token: ${{ secrets.SONAR_TOKEN }}
+        sonar_host: https://sonarcloud.io
+        organization: your-sonarcloud-organization
+        projectKey: your-project-key
+      continue-on-error: false  # This will fail the pipeline if the quality gate fails
+
