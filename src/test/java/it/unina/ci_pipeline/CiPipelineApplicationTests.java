@@ -21,7 +21,7 @@ class CiPipelineApplicationTests {
 	}
 
 	@Test
-	void test() {
+	void test1() {
 		//Arrange
 		var date = LocalDate.of(2000, 1, 1);
 		var t = new Transaction(2f, date);
@@ -32,6 +32,38 @@ class CiPipelineApplicationTests {
 
 		//Assert
 		Assertions.assertTrue(repo.getTransactions(date, date).contains(t));
+	}
+
+	@Test
+	void test2() {
+		//Arrange
+		var startdate = LocalDate.of(2000, 1, 1);
+		var enddate = LocalDate.of(2000, 1, 30);
+		var date = LocalDate.of(2000, 1, 15);
+		var t = new Transaction(2f, date);
+		var repo = new TransactionRepository(new ArrayList<>());
+
+		//Act
+		repo.addTransaction(t);
+
+		//Assert
+		Assertions.assertTrue(repo.getTransactions(startdate, enddate).contains(t));
+	}
+
+	@Test
+	void test3() {
+		//Arrange
+		var startdate = LocalDate.of(2000, 3, 1);
+		var enddate = LocalDate.of(2000, 3, 30);
+		var date = LocalDate.of(2000, 1, 1);
+		var t = new Transaction(2f, date);
+		var repo = new TransactionRepository(new ArrayList<>());
+
+		//Act
+		repo.addTransaction(t);
+
+		//Assert
+		Assertions.assertFalse(repo.getTransactions(startdate, enddate).contains(t));
 	}
 
 }
