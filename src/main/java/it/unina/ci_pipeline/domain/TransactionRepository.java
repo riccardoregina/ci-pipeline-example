@@ -19,7 +19,7 @@ public class TransactionRepository {
         var ret = new ArrayList<Transaction>();
         for (var t : transactions) {
             var date = t.getDate();
-            if ((date.isAfter(startDate)) &&
+            if ((date.isAfter(startDate) || date.isEqual(startDate)) &&
                     (date.isEqual(endDate) || date.isBefore(endDate))) {
                 ret.add(t);
             }
